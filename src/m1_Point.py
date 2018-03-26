@@ -51,7 +51,7 @@ class Point(object):
         self.number_of_moves = 0
         self.originalx = x
         self.originaly = y
-        total_distance = 0
+        self.total_distance = 0
 
     def __repr__(self):
         return 'Point({}, {})'.format(self.x, self.y)
@@ -63,13 +63,13 @@ class Point(object):
         self.x = x
         self.y = y
         self.number_of_moves = 1 + self.number_of_moves
-        total_distance = total_distance + math.sqrt((x - self.x)**2 + (y - self.y)**2)
+        self.total_distance = self.total_distance + math.sqrt((x - self.x)**2 + (y - self.y)**2)
 
     def move_by(self, dx, dy):
         self.x = self.x + dx
         self.y = self.y + dy
         self.number_of_moves = 1 + self.number_of_moves
-        total_distance = total_distance + math.sqrt((self.x - point.x) ** 2 + (self.y - point.y) ** 2)
+        self.total_distance = self.total_distance + math.sqrt((self.x - Point.x) ** 2 + (self.y - Point.y) ** 2)
 
     def get_number_of_moves_made(self):
         return self.number_of_moves
@@ -83,7 +83,7 @@ class Point(object):
         return distance_from_start
 
     def get_distance_traveled(self):
-        distance_traveled = total_distance
+        distance_traveled = self.total_distance
         return distance_traveled
 
 def run_test_init():
